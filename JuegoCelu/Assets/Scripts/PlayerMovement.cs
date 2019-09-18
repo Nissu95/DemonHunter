@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     CharacterController2D controller;
     bool isJumping = false;
     bool isCrouching = false;
+    bool isAttacking = false;
 
     private void Awake()
     {
@@ -26,10 +27,16 @@ public class PlayerMovement : MonoBehaviour
             isCrouching = true;
         else
             isCrouching = false;
+
+        if (Input.GetButtonDown("Fire1"))
+            isAttacking = true;
+        else
+            isAttacking = false;
     }
 
     private void FixedUpdate()
     {
         controller.Move(runSpeed * Time.fixedDeltaTime, isCrouching, isJumping);
+        controller.Attack(isAttacking);
     }
 }

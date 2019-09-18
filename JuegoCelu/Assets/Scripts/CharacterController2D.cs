@@ -11,8 +11,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
+    [SerializeField] GameObject hitCollider;
 
-	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+    const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
@@ -39,6 +40,8 @@ public class CharacterController2D : MonoBehaviour
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
+
+        hitCollider.SetActive(false);
 	}
 
 	private void FixedUpdate()
@@ -59,7 +62,6 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 	}
-
 
 	public void Move(float move, bool crouch, bool jump)
 	{
@@ -110,7 +112,7 @@ public class CharacterController2D : MonoBehaviour
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
-			// If the input is moving the player right and the player is facing left...
+			/*// If the input is moving the player right and the player is facing left...
 			if (move > 0 && !m_FacingRight)
 			{
 				// ... flip the player.
@@ -121,7 +123,7 @@ public class CharacterController2D : MonoBehaviour
 			{
 				// ... flip the player.
 				Flip();
-			}
+			}*/
 		}
 		// If the player should jump...
 		if (m_Grounded && jump)
@@ -132,8 +134,21 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
+    public void Attack(bool attack)
+    {
+        if (attack == true)
+        {
+            hitCollider.SetActive(true);
+            Debug.Log("Attacking");
+        }
+        else
+        {
+            hitCollider.SetActive(false);
+            Debug.Log("Not Attacking");
+        }
+    }
 
-	private void Flip()
+	/*private void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
@@ -142,5 +157,5 @@ public class CharacterController2D : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-	}
+	}*/
 }
