@@ -20,9 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4971202537874706}
   - component: {fileID: 212773097342510142}
+  - component: {fileID: 50612684053883758}
   - component: {fileID: 61404551248435814}
   - component: {fileID: 58016047569364962}
-  - component: {fileID: 50612684053883758}
+  - component: {fileID: 61219765898115242}
+  - component: {fileID: 114360820795494566}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -69,7 +71,7 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536052705591056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -78,13 +80,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.065}
   serializedVersion: 2
   m_Radius: 0.43485698
---- !u!61 &61404551248435814
+--- !u!61 &61219765898115242
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536052705591056}
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &61404551248435814
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536052705591056}
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -103,6 +130,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.4387684}
   m_EdgeRadius: 0
+--- !u!114 &114360820795494566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536052705591056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deed8022f6b61e14eaaf82bffb085ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212773097342510142
 SpriteRenderer:
   m_ObjectHideFlags: 1
