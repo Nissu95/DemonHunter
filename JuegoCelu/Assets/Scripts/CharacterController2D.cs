@@ -136,10 +136,7 @@ public class CharacterController2D : MonoBehaviour
 
     public void Attack(bool attack)
     {
-        if (attack == true)
-            hitCollider.SetActive(true);
-        else
-            hitCollider.SetActive(false);
+        hitCollider.SetActive(attack);
     }
 
 	/*private void Flip()

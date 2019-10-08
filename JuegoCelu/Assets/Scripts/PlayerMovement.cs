@@ -19,9 +19,11 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(runSpeed * Time.fixedDeltaTime,
             InputManager.singleton.GetInput().GetCrouch(),
             InputManager.singleton.GetInput().GetJump());
+
         controller.Attack(InputManager.singleton.GetInput().GetAttack());
+
         InputManager.singleton.GetInput().SetJump(false);
         InputManager.singleton.GetInput().SetCrouch(false);
-        InputManager.singleton.GetInput().SetAttack(false);
+        //InputManager.singleton.GetInput().SetAttack(false);
     }
 }

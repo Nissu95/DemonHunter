@@ -7,7 +7,18 @@ public class EnemyHealth : Health
     public override void TakeDamage(bool _IsDamage)
     {
         if (_IsDamage)
-            gameObject.SetActive(false);
+            Death();
     }
 
+    public override void TakeDamage(float _Damage)
+    {
+        m_Health -= _Damage;
+        if (m_Health <= 0)
+            Death();
+    }
+
+    public override void Death()
+    {
+        gameObject.SetActive(false);
+    }
 }
