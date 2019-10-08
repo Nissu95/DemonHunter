@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobileInput : MonoBehaviour
+public class MobileInput : GeneralInput
 {
-    public static MobileInput singleton;
-
-    [SerializeField] float m_MaxTime;
-    [SerializeField] float m_MinSwipeDistance;
+    float m_MaxTime;
+    float m_MinSwipeDistance;
 
     float m_StartTime;
     float m_EndTime;
@@ -17,20 +15,7 @@ public class MobileInput : MonoBehaviour
     Vector3 m_StartPos;
     Vector3 m_EndPos;
 
-    bool m_Jump = false;
-    bool m_Crouch = false;
-    bool m_Attack = false;
-
-    void Awake()
-    {
-        DontDestroyOnLoad(this);
-        if (singleton != null)
-            Destroy(gameObject);
-        else
-            singleton = this;
-    }
-
-    private void Update()
+    public override void Update()
     {
         if (Input.touchCount > 0)
         {
@@ -85,33 +70,13 @@ public class MobileInput : MonoBehaviour
         }
     }
 
-    public bool GetJump()
+    public override void SetMaxTime(float _MaxTime)
     {
-        return m_Jump;
+        m_MaxTime = _MaxTime;
     }
 
-    public bool GetCrouch()
+    public override void SetMinSwipeDistance(float _MinSwipeDistance)
     {
-        return m_Crouch;
-    }
-
-    public bool GetAttack()
-    {
-        return m_Attack;
-    }
-
-    public void SetJump(bool _Jump)
-    {
-        m_Jump = _Jump;
-    }
-
-    public void SetCrouch(bool _Crouch)
-    {
-        m_Crouch = _Crouch;
-    }
-
-    public void SetAttack(bool _Attack)
-    {
-        m_Attack = _Attack;
+        m_MinSwipeDistance = _MinSwipeDistance;
     }
 }
