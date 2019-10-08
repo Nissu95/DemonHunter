@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Damage_Script : MonoBehaviour
 {
-    [SerializeField] string m_EnemyTag;
+    [SerializeField] float damage = 10;
+    [SerializeField] string enemyTag;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag(m_EnemyTag))
-        {
-            Health otherHealth = other.GetComponent<Health>();
-            otherHealth.TakeDamage(true);
-        }
+        if (collision.CompareTag(enemyTag))
+            collision.GetComponent<EnemyHealth>().TakeDamage(damage);
     }
+
 }

@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
-    public override void TakeDamage(bool _IsDamage)
+    private void Awake()
     {
-        if (_IsDamage)
-            gameObject.SetActive(false);
+        m_Health = GetComponent<EnemyDT>().GetData().GetHealth();
     }
 
+    public override void TakeDamage(float _Damage)
+    {
+        m_Health -= _Damage;
+        if (m_Health <= 0)
+            Death();
+    }
+
+    public override void Death()
+    {
+        gameObject.SetActive(false);
+    }
 }
