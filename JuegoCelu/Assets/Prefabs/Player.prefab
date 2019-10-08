@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4705389479633766}
   - component: {fileID: 61759343173018398}
   - component: {fileID: 114081809756725560}
+  - component: {fileID: 61005134562186586}
   m_Layer: 8
   m_Name: HitCollider
   m_TagString: Untagged
@@ -242,7 +243,7 @@ CircleCollider2D:
   m_Radius: 0.43485698
 --- !u!61 &61005134562186586
 BoxCollider2D:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1965963261332854}
