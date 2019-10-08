@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxTime: 0.5
   m_MinSwipeDistance: 50
---- !u!1001 &606919772
+--- !u!1001 &287016752
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -243,7 +243,7 @@ Prefab:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1536052705591056, guid: b3eb66c5b6db3b74e801dcc57bd8d261,
     type: 2}
-  m_PrefabInternal: {fileID: 606919772}
+  m_PrefabInternal: {fileID: 287016752}
 --- !u!1 &1327378296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1303852315709320, guid: 190a5eac15873f94184a0c1416fbea64,
