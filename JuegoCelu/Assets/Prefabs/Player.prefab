@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 61669611423571976}
   - component: {fileID: 58188810652169404}
   - component: {fileID: 50072029071132442}
-  - component: {fileID: 114044822949766902}
   - component: {fileID: 114981614985569122}
   - component: {fileID: 114279058693329884}
+  - component: {fileID: 114670413548785090}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -88,7 +88,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4705389479633766}
-  - component: {fileID: 65117972668193270}
+  - component: {fileID: 61759343173018398}
+  - component: {fileID: 114081809756725560}
   m_Layer: 8
   m_Name: HitCollider
   m_TagString: Untagged
@@ -265,18 +266,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.4387684}
   m_EdgeRadius: 0
---- !u!65 &65117972668193270
-BoxCollider:
+--- !u!61 &61759343173018398
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1965963261332854}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!81 &81751655389365080
 AudioListener:
   m_ObjectHideFlags: 1
@@ -284,17 +298,21 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020492113537200}
   m_Enabled: 1
---- !u!114 &114044822949766902
+--- !u!114 &114081809756725560
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1303852315709320}
+  m_GameObject: {fileID: 1965963261332854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e46f57797850add4d86b389d85c75fa3, type: 3}
+  m_Script: {fileID: 11500000, guid: aba83e3580168bd42afdb9c5cb2bbd0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  enemyTag:
+  - Enemy
+  - TurretEnemy
 --- !u!114 &114279058693329884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +325,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 40
+--- !u!114 &114670413548785090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303852315709320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f30756b0ea0f0c468f47f21e76a37d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114981614985569122
 MonoBehaviour:
   m_ObjectHideFlags: 1
