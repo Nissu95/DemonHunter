@@ -48,6 +48,15 @@ public class Bullet_Script : MonoBehaviour
         enemyTag = _EnemyTag;
     }
 
+    public void Reflect(string _EnemyTag)
+    {
+        if (enemyTag != _EnemyTag)
+        {
+            bulletSpeed *= -1;
+            enemyTag = _EnemyTag;
+        }
+    }
+
     public void RestartTimer()
     {
         timer = maxTime;
