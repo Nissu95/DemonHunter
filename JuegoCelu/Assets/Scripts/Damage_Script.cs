@@ -5,12 +5,15 @@ using UnityEngine;
 public class Damage_Script : MonoBehaviour
 {
     [SerializeField] float damage = 10;
-    [SerializeField] string[] enemyTag;
+    [SerializeField] string enemyTag;
+    [SerializeField] string turretEnemyTag;
+    [SerializeField] string bulletTag;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        for (int i = 0; i < enemyTag.Length; i++)
-            if (collision.CompareTag(enemyTag[i]))
-                collision.GetComponent<Health>().TakeDamage(damage);
+        if (collision.CompareTag(enemyTag) || collision.CompareTag(turretEnemyTag))
+            collision.GetComponent<Health>().TakeDamage(damage);
+        else if (collision.CompareTag(bulletTag))
+            collision.GetComponent<Bullet_Script>().Reflect(turretEnemyTag);
     }
 }
