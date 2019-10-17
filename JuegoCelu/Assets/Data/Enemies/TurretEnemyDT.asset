@@ -14,4 +14,6 @@ MonoBehaviour:
   m_Damage: 0
   m_Health: 10
   m_AttackRange: 20
+  m_AttackCooldown: 3
   m_Speed: 0
+  m_EnemyTag: Player

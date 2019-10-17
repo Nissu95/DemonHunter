@@ -21,7 +21,7 @@ namespace StrategyPattern
                 m_AllEnemies.Add(new NormalEnemy(normalEnemies[i].transform, normalEnemies[i].GetComponent<EnemyDT>()));
 
             for (int i = 0; i < turretEnemies.Count; i++)
-                m_AllEnemies.Add(new TurretEnemy(turretEnemies[i].transform, normalEnemies[i].GetComponent<EnemyDT>()));
+                m_AllEnemies.Add(new TurretEnemy(turretEnemies[i].transform, turretEnemies[i].GetComponent<EnemyDT>()));
 
             if (bossEnemy)
                 m_AllEnemies.Add(new BossEnemy(bossEnemy.transform, bossEnemy.GetComponent<EnemyDT>()));
