@@ -5,5 +5,6 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public virtual void TakeDamage(float _Damage) { }
+    public virtual void TakeDamage() { }
     public virtual void Death() { }
 }
