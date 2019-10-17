@@ -25,9 +25,7 @@ namespace StrategyPattern
             {
                 case EnemyFSM.Move:
                     if (distance <= attackRange)
-                    {
                         enemyMode = EnemyFSM.Attack;
-                    }
                     break;
                 /*case EnemyFSM.Attack:
                     break;*/
@@ -42,7 +40,7 @@ namespace StrategyPattern
             switch (enemyMode)
             {
                 case EnemyFSM.Attack:
-                    //Attack player
+                    Attack();
                     Debug.Log("Normal Enemy is attacking");
                     break;
                 case EnemyFSM.Move:
@@ -50,6 +48,11 @@ namespace StrategyPattern
                     Debug.Log("Normal Enemy is moving");
                     break;
             }
+        }
+
+        void Attack()
+        {
+            enemyObj.GetComponent<GetHitCollider>().GetCollider().SetActive(true);
         }
     }
 }

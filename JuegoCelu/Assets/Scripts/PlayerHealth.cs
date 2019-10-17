@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
-    public override void TakeDamage(float _Damage)
+    public override void TakeDamage()
     {
         Death();
     }

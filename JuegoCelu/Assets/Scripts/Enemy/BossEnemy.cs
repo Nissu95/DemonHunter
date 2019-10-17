@@ -25,9 +25,7 @@ namespace StrategyPattern
             {
                 case EnemyFSM.Move:
                     if (distance <= attackRange)
-                    {
                         enemyMode = EnemyFSM.Attack;
-                    }
                     break;
                     /*case EnemyFSM.Attack:
                         break;*/
