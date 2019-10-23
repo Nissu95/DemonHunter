@@ -44,8 +44,9 @@ namespace StrategyPattern
                     Debug.Log("Normal Enemy is attacking");
                     break;
                 case EnemyFSM.Move:
-                    enemyObj.Translate(enemyObj.forward * speed * Time.deltaTime);
+                    enemyObj.Translate(-enemyObj.right * speed * Time.deltaTime);
                     Debug.Log("Normal Enemy is moving");
+                    Debug.Log(enemyObj);
                     break;
             }
         }
