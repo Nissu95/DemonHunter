@@ -31,9 +31,8 @@ namespace StrategyPattern
         {
             //Update all enemies to see if they should change state and move/attack player
             for (int i = 0; i < m_AllEnemies.Count; i++)
-            {
-                m_AllEnemies[i].UpdateEnemy(playerObj.transform);
-            }
+                if (m_AllEnemies[i].GetEnemyOBJ().gameObject.activeInHierarchy)
+                    m_AllEnemies[i].UpdateEnemy(playerObj.transform);
         }
     }
 }
