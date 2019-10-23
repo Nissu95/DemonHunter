@@ -22,5 +22,7 @@ namespace StrategyPattern
 
         //Do something based on a state
         protected virtual void DoAction(Transform playerObj, EnemyFSM enemyMode) { }
+
+        public Transform GetEnemyOBJ() { return enemyObj; }
     }
 }
