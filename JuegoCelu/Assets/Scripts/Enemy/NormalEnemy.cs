@@ -6,15 +6,17 @@ namespace StrategyPattern
 {
     public class NormalEnemy : Enemy
     {
-        EnemyFSM enemyMode = EnemyFSM.Move;
+        EnemyFSM enemyMode = EnemyFSM.Idle;
         float speed;
         float attackRange;
+        float startMoveRange;
 
         public NormalEnemy(Transform normalEnemyObj, EnemyDT data)
         {
             enemyObj = normalEnemyObj;
             speed = data.GetData().GetSpeed();
             attackRange = data.GetData().GetRange();
+            startMoveRange = data.GetData().GetStartMoveRange();
         }
 
         public override void UpdateEnemy(Transform playerObj)
@@ -23,6 +25,10 @@ namespace StrategyPattern
 
             switch (enemyMode)
             {
+                case EnemyFSM.Idle:
+                    if (distance <= startMoveRange)
+                        enemyMode = EnemyFSM.Move;
+                    break;
                 case EnemyFSM.Move:
                     if (distance <= attackRange)
                         enemyMode = EnemyFSM.Attack;
@@ -43,10 +49,12 @@ namespace StrategyPattern
                     Attack();
                     Debug.Log("Normal Enemy is attacking");
                     break;
+                case EnemyFSM.Idle:
+                    Debug.Log("Normal Enemy is idle");
+                    break;
                 case EnemyFSM.Move:
                     enemyObj.Translate(-enemyObj.right * speed * Time.deltaTime);
                     Debug.Log("Normal Enemy is moving");
-                    Debug.Log(enemyObj);
                     break;
             }
         }

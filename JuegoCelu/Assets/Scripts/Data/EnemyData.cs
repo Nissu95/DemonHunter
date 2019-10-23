@@ -10,6 +10,7 @@ public class EnemyData : ScriptableObject
     [SerializeField] float m_AttackRange;
     [SerializeField] float m_AttackCooldown;
     [SerializeField] float m_Speed;
+    [SerializeField] float m_StartMoveRange;
 
     public float GetDamage()
     {
@@ -34,5 +35,10 @@ public class EnemyData : ScriptableObject
     public float GetSpeed()
     {
         return m_Speed;
+    }
+
+    public float GetStartMoveRange()
+    {
+        return m_StartMoveRange;
     }
 }
