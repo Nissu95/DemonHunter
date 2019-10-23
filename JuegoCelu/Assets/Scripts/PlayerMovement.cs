@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //controller.Move(runSpeed * Time.fixedDeltaTime, isCrouching, isJumping);
         controller.Move(runSpeed * Time.fixedDeltaTime,
             InputManager.singleton.GetInput().GetCrouch(),
             InputManager.singleton.GetInput().GetJump());
@@ -24,6 +23,5 @@ public class PlayerMovement : MonoBehaviour
 
         InputManager.singleton.GetInput().SetJump(false);
         InputManager.singleton.GetInput().SetCrouch(false);
-        //InputManager.singleton.GetInput().SetAttack(false);
     }
 }
