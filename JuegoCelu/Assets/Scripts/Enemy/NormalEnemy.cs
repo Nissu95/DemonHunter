@@ -15,7 +15,7 @@ namespace StrategyPattern
         {
             enemyObj = normalEnemyObj;
             speed = data.GetData().GetSpeed();
-            attackRange = data.GetData().GetRange();
+            attackRange = data.GetData().GetAttackRange();
             startMoveRange = data.GetData().GetStartMoveRange();
         }
 
@@ -53,7 +53,7 @@ namespace StrategyPattern
                     Debug.Log("Normal Enemy is idle");
                     break;
                 case EnemyFSM.Move:
-                    enemyObj.Translate(-enemyObj.right * speed * Time.deltaTime);
+                    Move();
                     Debug.Log("Normal Enemy is moving");
                     break;
             }
@@ -62,6 +62,11 @@ namespace StrategyPattern
         void Attack()
         {
             enemyObj.GetComponent<GetHitCollider>().GetCollider().SetActive(true);
+        }
+
+        void Move()
+        {
+            enemyObj.Translate(-enemyObj.right * speed * Time.deltaTime);
         }
     }
 }

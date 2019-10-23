@@ -14,7 +14,7 @@ namespace StrategyPattern
         {
             enemyObj = bossEnemyObj;
             speed = data.GetData().GetSpeed();
-            attackRange = data.GetData().GetRange();
+            attackRange = data.GetData().GetAttackRange();
         }
 
         public override void UpdateEnemy(Transform playerObj)

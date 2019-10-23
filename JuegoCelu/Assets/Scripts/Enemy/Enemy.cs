@@ -13,6 +13,7 @@ namespace StrategyPattern
         {
             Move,
             Attack,
+            Shot,
             Idle,
             Stun
         }
