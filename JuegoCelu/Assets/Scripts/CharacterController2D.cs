@@ -19,6 +19,9 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	//private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+    private bool wasAttacking = false;
+
+    Animator animator;
 
 	[Header("Events")]
 	[Space]
@@ -34,6 +37,7 @@ public class CharacterController2D : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -61,6 +65,8 @@ public class CharacterController2D : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+        
+        animator.SetBool("IsJumping", !m_Grounded);
 	}
 
 	public void Move(float move, bool crouch, bool jump)
@@ -84,6 +90,7 @@ public class CharacterController2D : MonoBehaviour
 			{
 				if (!m_wasCrouching)
 				{
+                    animator.SetTrigger("Roll");
 					m_wasCrouching = true;
 					OnCrouchEvent.Invoke(true);
 				}
@@ -132,11 +139,18 @@ public class CharacterController2D : MonoBehaviour
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
+
+
 	}
 
     public void Attack(bool attack)
     {
         hitCollider.SetActive(attack);
+
+        if (attack && !wasAttacking)
+            animator.SetTrigger("Attack");
+
+        wasAttacking = attack;
     }
 
 	/*private void Flip()
