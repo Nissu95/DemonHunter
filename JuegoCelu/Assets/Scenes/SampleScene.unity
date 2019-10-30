@@ -713,10 +713,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1354582599099748, guid: b8bafd544a13cb34eb7de0fcd8f5845f, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8bafd544a13cb34eb7de0fcd8f5845f, type: 2}
   m_IsPrefabAsset: 0
@@ -735,24 +731,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4532983825719308, guid: 190a5eac15873f94184a0c1416fbea64,
     type: 2}
   m_PrefabInternal: {fileID: 1445441314}
---- !u!95 &665383197
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 665383189}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 955b32cb052211447852e1d55d84970d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &669283295
 Prefab:
   m_ObjectHideFlags: 0
@@ -791,10 +769,6 @@ Prefab:
     - target: {fileID: 4971202537874706, guid: b3eb66c5b6db3b74e801dcc57bd8d261, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413540387590068, guid: b3eb66c5b6db3b74e801dcc57bd8d261, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3eb66c5b6db3b74e801dcc57bd8d261, type: 2}
@@ -1141,21 +1115,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4532983825719308, guid: 190a5eac15873f94184a0c1416fbea64, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212422814908413676, guid: 190a5eac15873f94184a0c1416fbea64,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212422814908413676, guid: 190a5eac15873f94184a0c1416fbea64,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212422814908413676, guid: 190a5eac15873f94184a0c1416fbea64,
-        type: 2}
-      propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

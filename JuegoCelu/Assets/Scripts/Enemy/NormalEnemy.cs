@@ -11,12 +11,16 @@ namespace StrategyPattern
         float attackRange;
         float startMoveRange;
 
+        Animator animator;
+
         public NormalEnemy(Transform normalEnemyObj, EnemyDT data)
         {
             enemyObj = normalEnemyObj;
             speed = data.GetData().GetSpeed();
             attackRange = data.GetData().GetAttackRange();
             startMoveRange = data.GetData().GetStartMoveRange();
+
+            animator = enemyObj.GetComponent<Animator>();
         }
 
         public override void UpdateEnemy(Transform playerObj)
@@ -51,6 +55,7 @@ namespace StrategyPattern
                     break;
                 case EnemyFSM.Idle:
                     Debug.Log("Normal Enemy is idle");
+                    animator.SetBool("Walking", false);
                     break;
                 case EnemyFSM.Move:
                     Move();
@@ -62,11 +67,13 @@ namespace StrategyPattern
         void Attack()
         {
             enemyObj.GetComponent<GetHitCollider>().GetCollider().SetActive(true);
+            animator.SetTrigger("Attack");
         }
 
         void Move()
         {
             enemyObj.Translate(-enemyObj.right * speed * Time.deltaTime);
+            animator.SetBool("Walking", true);
         }
     }
 }
