@@ -129,12 +129,12 @@ public class CharacterController2D : MonoBehaviour
 				Flip();
 			}*/
         }
+
         // If the player should jump...
         if (m_Grounded && jump)
         {
             // Add a vertical force to the player.
-            m_Grounded = false;
-            m_Rigidbody2D.AddForce(transform.up * m_JumpForce);
+            Jump();
         }
     }
 
@@ -143,9 +143,14 @@ public class CharacterController2D : MonoBehaviour
         hitCollider.SetActive(attack);
     }
 
+    public void Jump()
+    {
+        m_Grounded = false;
+        m_Rigidbody2D.AddForce(transform.up * m_JumpForce);
+    }
+
     public void SpringboardJump(float _JumpForce)
     {
-        Debug.Log("asdasffsa");
         m_Grounded = false;
         m_Rigidbody2D.AddForce(transform.up * _JumpForce);
     }
