@@ -18,6 +18,7 @@ public class PlayerHealth : Health
 
     public override void Death()
     {
+        GameManager.singleton.OnPlayerDeath();
         animator.SetTrigger("Death");
         gameObject.SetActive(false);
     }

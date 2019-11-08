@@ -12,13 +12,13 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         offset = transform.position - playerTrans.position;
+        tempVec3.y = transform.position.y;
+        tempVec3.z = transform.position.z;
     }
 
     void LateUpdate()
     {
         tempVec3.x = playerTrans.position.x + offset.x;
-        tempVec3.y = transform.position.y;
-        tempVec3.z = transform.position.z;
         transform.position = tempVec3;
     }
 }
