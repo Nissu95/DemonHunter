@@ -15,6 +15,8 @@ namespace StrategyPattern
         float speed;
         float attackRange;
 
+        Animator animator;
+
         public TurretEnemy(Transform turretEnemyObj, EnemyDT data)
         {
             enemyObj = turretEnemyObj;
@@ -24,6 +26,8 @@ namespace StrategyPattern
             startMoveRange = data.GetData().GetStartMoveRange();
             speed = data.GetData().GetSpeed();
             attackRange = data.GetData().GetAttackRange();
+
+            animator = enemyObj.GetComponent<Animator>();
         }
 
         public override void UpdateEnemy(Transform playerObj)
@@ -60,6 +64,7 @@ namespace StrategyPattern
                     break;
                 case EnemyFSM.Idle:
                     Debug.Log("Turret Enemy is idle");
+                    animator.SetBool("Walking", false);
                     break;
                 case EnemyFSM.Move:
                     Move();
@@ -78,6 +83,9 @@ namespace StrategyPattern
 
             if (timer >= attackCooldown)
             {
+
+                animator.SetTrigger("Attack");
+
                 pool = PoolManager.GetInstance().GetPool("ProyectilePool");
 
                 PoolObject po = pool.GetPooledObject();
@@ -91,11 +99,13 @@ namespace StrategyPattern
         void Attack()
         {
             enemyObj.GetComponent<GetHitCollider>().GetCollider().SetActive(true);
+            animator.SetTrigger("Attack");
         }
 
         void Move()
         {
             enemyObj.Translate(-enemyObj.right * speed * Time.deltaTime);
+            animator.SetBool("Walking", true);
         }
     }
 }

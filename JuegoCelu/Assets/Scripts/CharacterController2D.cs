@@ -21,6 +21,9 @@ public class CharacterController2D : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     private Vector3 m_TargetVelocity = Vector3.zero;
     private Vector2 m_TargetVelocityV2 = Vector2.zero;
+    private bool wasAttacking = false;
+
+    Animator animator;
 
     [Header("Events")]
     [Space]
@@ -36,6 +39,7 @@ public class CharacterController2D : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
@@ -63,6 +67,8 @@ public class CharacterController2D : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
+
+        animator.SetBool("IsJumping", !m_Grounded);
     }
 
     public void Move(float move, bool crouch, bool jump)
@@ -85,6 +91,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 if (!m_wasCrouching)
                 {
+                    animator.SetTrigger("Roll");
                     m_wasCrouching = true;
                     OnCrouchEvent.Invoke(true);
                 }
@@ -141,6 +148,11 @@ public class CharacterController2D : MonoBehaviour
     public void Attack(bool attack)
     {
         hitCollider.SetActive(attack);
+
+        if (attack && !wasAttacking)
+            animator.SetTrigger("Attack");
+
+        wasAttacking = attack;
     }
 
     public void Jump()
