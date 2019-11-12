@@ -8,16 +8,26 @@ namespace StrategyPattern
     {
         EnemyFSM enemyMode = EnemyFSM.Idle;
         Pool pool;
-        float attackRange;
+        float shotRange;
         float attackCooldown;
         float timer;
+        float startMoveRange;
+        float speed;
+        float attackRange;
+
+        Animator animator;
 
         public TurretEnemy(Transform turretEnemyObj, EnemyDT data)
         {
             enemyObj = turretEnemyObj;
-            attackRange = data.GetData().GetRange();
+            shotRange = data.GetData().GetShotRange();
             attackCooldown = data.GetData().GetAttackCooldown();
             timer = attackCooldown;
+            startMoveRange = data.GetData().GetStartMoveRange();
+            speed = data.GetData().GetSpeed();
+            attackRange = data.GetData().GetAttackRange();
+
+            animator = enemyObj.GetComponent<Animator>();
         }
 
         public override void UpdateEnemy(Transform playerObj)
@@ -27,11 +37,17 @@ namespace StrategyPattern
             switch (enemyMode)
             {
                 case EnemyFSM.Idle:
+                    if (distance <= shotRange)
+                        enemyMode = EnemyFSM.Shot;
+                    break;
+                case EnemyFSM.Shot:
+                    if (distance <= startMoveRange)
+                        enemyMode = EnemyFSM.Move;
+                    break;
+                case EnemyFSM.Move:
                     if (distance <= attackRange)
                         enemyMode = EnemyFSM.Attack;
                     break;
-                    /*case EnemyFSM.Attack:
-                        break;*/
             }
 
             //Move the enemy based on a state
@@ -42,22 +58,34 @@ namespace StrategyPattern
         {
             switch (enemyMode)
             {
-                case EnemyFSM.Attack:
-                    Attack(playerObj);
-                    Debug.Log("Turret Enemy is attacking");
+                case EnemyFSM.Shot:
+                    Shot(playerObj);
+                    Debug.Log("Turret Enemy is Shooting");
                     break;
                 case EnemyFSM.Idle:
                     Debug.Log("Turret Enemy is idle");
+                    animator.SetBool("Walking", false);
+                    break;
+                case EnemyFSM.Move:
+                    Move();
+                    Debug.Log("Turret Enemy is moving");
+                    break;
+                case EnemyFSM.Attack:
+                    Attack();
+                    Debug.Log("Turret Enemy is attacking");
                     break;
             }
         }
 
-        void Attack(Transform playerObj)
+        void Shot(Transform playerObj)
         {
             timer += Time.deltaTime;
 
             if (timer >= attackCooldown)
             {
+
+                animator.SetTrigger("Attack");
+
                 pool = PoolManager.GetInstance().GetPool("ProyectilePool");
 
                 PoolObject po = pool.GetPooledObject();
@@ -66,6 +94,18 @@ namespace StrategyPattern
                 po.gameObject.transform.rotation = enemyObj.rotation;
                 timer = 0;
             }
+        }
+
+        void Attack()
+        {
+            enemyObj.GetComponent<GetHitCollider>().GetCollider().SetActive(true);
+            animator.SetTrigger("Attack");
+        }
+
+        void Move()
+        {
+            enemyObj.Translate(-enemyObj.right * speed * Time.deltaTime);
+            animator.SetBool("Walking", true);
         }
     }
 }
